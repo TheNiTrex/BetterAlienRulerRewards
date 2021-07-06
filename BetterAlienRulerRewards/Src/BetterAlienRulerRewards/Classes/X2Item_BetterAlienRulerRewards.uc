@@ -13,6 +13,8 @@ var config int IcarusJets_TradingPostValue;
 var config array<ArtifactCost> IcarusJets_ResourceCosts;
 var config array<ArtifactCost> IcarusJets_ArtifactCosts;
 
+var config bool EnablePanicAbilities;
+
 static function array<X2DataTemplate> CreateTemplates() {
 
 	local array<X2DataTemplate> Items;
@@ -42,6 +44,7 @@ static function X2EquipmentTemplate CreateRageVest() {
 	Template.Abilities.AddItem('RageVestBonus');
 	Template.Abilities.AddItem('Ragestrike');
 	Template.Abilities.AddItem('RageArmorAnim');
+	if (default.EnablePanicAbilities) Template.Abilities.AddItem('RagePanic');
 
 	// Build:
 	Template.CanBeBuilt = true;
@@ -87,6 +90,7 @@ static function X2DataTemplate CreateFrostHook() {
 	Template.Abilities.AddItem('GrapplePowered');
 	Template.Abilities.AddItem('FreezingLash');
 	Template.Abilities.AddItem('SerpentSuitAnim');
+	if (default.EnablePanicAbilities) Template.Abilities.AddItem('SerpentPanic');
 
 	// Build:
 	Template.CanBeBuilt = true;
@@ -127,6 +131,7 @@ static function X2DataTemplate CreateIcarusJets() {
 	// Abilities:
 	Template.Abilities.AddItem('IcarusJump');
 	Template.Abilities.AddItem('IcarusSuitAnim');
+	if (default.EnablePanicAbilities) Template.Abilities.AddItem('IcarusPanic');
 
 	// Build:
 	Template.CanBeBuilt = true;
