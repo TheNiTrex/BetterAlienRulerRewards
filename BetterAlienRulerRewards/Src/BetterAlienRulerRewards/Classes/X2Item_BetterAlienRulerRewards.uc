@@ -14,6 +14,7 @@ var config array<ArtifactCost> IcarusJets_ResourceCosts;
 var config array<ArtifactCost> IcarusJets_ArtifactCosts;
 
 var config bool EnablePanicAbilities;
+var config bool EnableVaultAbility;
 
 static function array<X2DataTemplate> CreateTemplates() {
 
@@ -132,6 +133,11 @@ static function X2DataTemplate CreateIcarusJets() {
 	Template.Abilities.AddItem('IcarusJump');
 	Template.Abilities.AddItem('IcarusSuitAnim');
 	if (default.EnablePanicAbilities) Template.Abilities.AddItem('IcarusPanic');
+	if (default.EnableVaultAbility) {
+		Template.Abilities.AddItem('VaultAbility');
+		// Vault is considered a Bonus ability, so add its dummy Passive ability to have it show up in the UI:
+		Template.Abilities.AddItem('VaultAbilityPassive');
+	}
 
 	// Build:
 	Template.CanBeBuilt = true;
