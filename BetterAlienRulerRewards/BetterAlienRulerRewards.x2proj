@@ -3,7 +3,9 @@
   <PropertyGroup>
     <Guid>7f5b457c-91cc-48e0-9a30-36d41390e04d</Guid>
     <Name>Better Alien Ruler Rewards</Name>
-    <Description>Better Alien Ruler Rewards.</Description>
+    <Description>Overhauls how Alien Ruler Rewards are implemented.
+
+tags= War Of The Chosen, Item, Weapon, Gameplay</Description>
     <SteamPublishID>0</SteamPublishID>
     <AssemblyName>BetterAlienRulerRewards</AssemblyName>
     <RootNamespace>BetterAlienRulerRewards</RootNamespace>
