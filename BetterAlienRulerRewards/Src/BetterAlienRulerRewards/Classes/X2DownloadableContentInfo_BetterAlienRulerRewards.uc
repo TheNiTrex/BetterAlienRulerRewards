@@ -42,7 +42,8 @@ static event OnPostTemplatesCreated() {
 // ##############################
 
 static function AddNewTechTemplates() {
-
+	
+	local XComGameStateHistory History; 
 	local X2StrategyElementTemplateManager StratMgr;
 	local XComGameState	NewGameState;
 	local array<name> TemplateNames;
@@ -51,11 +52,13 @@ static function AddNewTechTemplates() {
 	local XComGameState_Tech TechState;
 	local X2TechTemplate TechTemplate;
 
+	History = `XCOMHISTORY;
+
 	// Access Strategy Template Manager:
 	StratMgr = class'X2StrategyElementTemplateManager'.static.GetStrategyElementTemplateManager();
 	
 	// Set up new GameState:
-	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Add new Tech Templates");
+	NewGameState = class'XComGameStateContext_ChangeContainer'.static.CreateChangeState("Better Alien Ruler Rewards: Adding new Tech Templates");
 
 	// List Tech Templates by names:
 	TemplateNames.AddItem('RageVest');
@@ -67,7 +70,8 @@ static function AddNewTechTemplates() {
 		// Check if TechState object exists:
 		bTechExists = false;
 
-		foreach `XCOMHISTORY.IterateByClassType(class'XComGameState_Tech', TechState) {
+		foreach History.IterateByClassType(class'XComGameState_Tech', TechState) {
+
 			if (TechState.GetMyTemplateName() == TemplateName) {
 
 				bTechExists = true;
@@ -91,14 +95,14 @@ static function AddNewTechTemplates() {
 	}
 
 	// Submit new GameState:
-	if (NewGameState.GetNumGameStateObjects() > 0) {
+	if (NewGameState.GetNumGameStateObjects() > 0) { // Submit the New Game State if we have added any State Objects to it
 
-		`GAMERULES.SubmitGameState(NewGameState);
+       	History.AddGameStateToHistory(NewGameState);
 
-	} else { // Should never trigger, but just good practice:
-
-		`XCOMHISTORY.CleanupPendingGameState(NewGameState);
-
+   	} else { // Otherwise, clean it up. Should never trigger in this case, but just good practice
+        
+      	History.CleanupPendingGameState(NewGameState);
+    
 	}
 }
 
