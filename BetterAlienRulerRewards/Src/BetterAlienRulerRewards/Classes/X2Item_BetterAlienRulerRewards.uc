@@ -48,6 +48,7 @@ static function X2EquipmentTemplate CreateRageVest() {
 	if (default.EnablePanicAbilities) Template.Abilities.AddItem('RagePanic');
 
 	// Build:
+	Template.StartingItem = false;
 	Template.CanBeBuilt = true;
 	Template.PointsToComplete = 0;
 	Template.TradingPostValue = default.RageVest_TradingPostValue;
@@ -94,6 +95,7 @@ static function X2DataTemplate CreateFrostHook() {
 	if (default.EnablePanicAbilities) Template.Abilities.AddItem('SerpentPanic');
 
 	// Build:
+	Template.StartingItem = false;
 	Template.CanBeBuilt = true;
 	Template.PointsToComplete = 0;
 	Template.TradingPostValue = default.FrostHook_TradingPostValue;
@@ -140,6 +142,7 @@ static function X2DataTemplate CreateIcarusJets() {
 	}
 
 	// Build:
+	Template.StartingItem = false;
 	Template.CanBeBuilt = true;
 	Template.PointsToComplete = 0;
 	Template.TradingPostValue = default.IcarusJets_TradingPostValue;
